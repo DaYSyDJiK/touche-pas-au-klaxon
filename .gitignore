@@ -3,3 +3,9 @@ vendor/
 .env.local
 .env.development
 .env.production
+
+/vendor/
+/node_modules/
+/.env
+.DS_Store
+Thumbs.db
