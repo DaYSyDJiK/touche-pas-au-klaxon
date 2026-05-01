@@ -33,4 +33,43 @@ class Trajet extends BaseModel
         $stmt = $pdo->query($sql);
         return $stmt->fetchAll();
     }
+
+    public static function create(array $data, int $idUtilisateur): void
+{
+    $pdo = self::getPDO();
+
+    $sql = "
+        INSERT INTO trajet (
+            id_utilisateur,
+            id_agence_depart,
+            id_agence_arrivee,
+            date_heure_depart,
+            date_heure_arrivee,
+            nombre_places_total,
+            nombre_places_disponibles
+        ) VALUES (
+            :id_utilisateur,
+            :id_agence_depart,
+            :id_agence_arrivee,
+            :date_heure_depart,
+            :date_heure_arrivee,
+            :nombre_places_total,
+            :nombre_places_disponibles
+        )
+    ";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->execute([
+        ':id_utilisateur' => $idUtilisateur,
+        ':id_agence_depart' => $data['id_agence_depart'],
+        ':id_agence_arrivee' => $data['id_agence_arrivee'],
+        ':date_heure_depart' => $data['date_heure_depart'],
+        ':date_heure_arrivee' => $data['date_heure_arrivee'],
+        ':nombre_places_total' => $data['nombre_places_total'],
+        ':nombre_places_disponibles' => $data['nombre_places_total']
+    ]);
 }
+}
+
+

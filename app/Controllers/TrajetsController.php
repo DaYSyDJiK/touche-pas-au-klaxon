@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Trajet;
+use App\Models\Agence;
 
 class TrajetsController extends BaseController
 {
@@ -14,7 +15,18 @@ class TrajetsController extends BaseController
 
     public function create(): void
 {
-    $this->render('trajets/create');
+    $agences = Agence::getAll();
+
+    $this->render('trajets/create', [
+        'agences' => $agences
+    ]);
+}
+
+public function store(): void
+{
+    Trajet::create($_POST, 1);
+
+    $this->redirect('/touche-pas-au-klaxon/public/');
 }
 
 }
