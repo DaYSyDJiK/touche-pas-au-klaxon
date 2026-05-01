@@ -9,7 +9,7 @@
             <?= htmlspecialchars($trajet['agence_depart']) ?> →
             <?= htmlspecialchars($trajet['agence_arrivee']) ?>
             (Départ : <?= $trajet['date_heure_depart'] ?>)
-            - Places dispo : <?= $trajet['nb_places_disponibles'] ?>
+            - Places dispo : <?= $trajet['nombre_places_disponibles'] ?>
         </li>
     <?php endforeach; ?>
     </ul>
