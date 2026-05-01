@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Touche pas au klaxon</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/touche-pas-au-klaxon/public/assets/css/main.css">
 </head>
 <body>
 <header class="bg-dark text-white p-3">

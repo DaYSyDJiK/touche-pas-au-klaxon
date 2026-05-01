@@ -20,6 +20,7 @@ class Trajet extends BaseModel
         a1.ville AS agence_depart,
         a2.ville AS agence_arrivee,
         t.date_heure_depart,
+        t.date_heure_arrivee,
         t.nombre_places_disponibles
     FROM trajet t
     JOIN agence a1 ON t.id_agence_depart = a1.id_agence
