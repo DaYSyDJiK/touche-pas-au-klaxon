@@ -11,4 +11,10 @@ class TrajetsController extends BaseController
         $trajets = Trajet::getTrajetsDisponibles();
         $this->render('trajets/index', ['trajets' => $trajets]);
     }
+
+    public function create(): void
+{
+    $this->render('trajets/create');
+}
+
 }

@@ -10,6 +10,9 @@ $basePath = rtrim($scriptName, '/');
 // Nettoyage du chemin
 $path = trim(str_replace($basePath, '', $requestUri), '/');
 $segments = explode('/', $path);
+if ($segments[0] === 'index.php') {
+    array_shift($segments);
+}
 
 // ✅ Contrôleur et action par défaut
 $controllerName = !empty($segments[0]) ? $segments[0] : 'trajets';
