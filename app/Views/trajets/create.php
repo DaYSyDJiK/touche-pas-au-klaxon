@@ -1,12 +1,28 @@
+<?php if (!empty($errors)): ?>
+    <div class="alert alert-danger">
+        <ul class="mb-0">
+            <?php foreach ($errors as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+
 <h1 class="mb-4">Créer un trajet</h1>
 
 <form method="POST" action="/touche-pas-au-klaxon/public/index.php/trajets/store">
+
+    <?php $agences = $agences ?? []; ?>
 
     <!-- Agence de départ -->
     <div class="mb-3">
         <label class="form-label">Agence de départ</label>
         <select name="id_agence_depart" class="form-select">
             <option value="">Choisir une agence</option>
+            <?php if (empty($agences)): ?>
+                <option disabled>Aucune agence disponible</option>
+            <?php endif; ?>
 
             <?php foreach ($agences as $agence): ?>
                 <option value="<?= $agence['id_agence'] ?>">
@@ -22,6 +38,9 @@
         <label class="form-label">Agence d'arrivée</label>
         <select name="id_agence_arrivee" class="form-select">
             <option value="">Choisir une agence</option>
+            <?php if (empty($agences)): ?>
+                <option disabled>Aucune agence disponible</option>
+            <?php endif; ?>
 
             <?php foreach ($agences as $agence): ?>
                 <option value="<?= $agence['id_agence'] ?>">
