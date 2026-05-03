@@ -16,6 +16,7 @@
             <a href="http://localhost/touche-pas-au-klaxon/public/index.php/trajets" class="btn btn-outline-light">Trajets</a>
             <?php if (!empty($_SESSION['user'])): ?>
                 <span class="mx-2">Bonjour <?= htmlspecialchars($_SESSION['user']['prenom']) ?></span>
+                <a href="http://localhost/touche-pas-au-klaxon/public/index.php/trajets/create" class="btn btn-outline-light">Créer un trajet</a>
                 <a href="http://localhost/touche-pas-au-klaxon/public/index.php/auth/logout" class="btn btn-outline-light">Déconnexion</a>
             
             <?php endif; ?>
