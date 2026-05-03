@@ -36,4 +36,5 @@ if (!method_exists($controller, $action)) {
     exit;
 }
 
-$controller->$action();
+$params = array_slice($segments, 2);
+$controller->$action(...$params);

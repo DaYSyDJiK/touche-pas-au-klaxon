@@ -29,7 +29,7 @@ class Agence extends BaseModel
         return $agence ?: null;
             }
 
-    public static function createAgence(string $ville): void
+    public static function create(string $ville): void
     {
         $pdo = self::getPDO();
 
@@ -41,7 +41,7 @@ class Agence extends BaseModel
         ]);
     }
 
-    public static function deleteAgence(int $id): void
+    public static function delete(int $id): void
     {
         $pdo = self::getPDO();
 
@@ -51,7 +51,7 @@ class Agence extends BaseModel
         $stmt->execute([':id' => $id]);
     }
 
-    public static function updateAgence(int $id, string $ville): void
+    public static function update(int $id, string $ville): void
     {
         $pdo = self::getPDO();
 
