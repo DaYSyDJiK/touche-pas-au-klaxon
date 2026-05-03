@@ -39,8 +39,14 @@ $errors[]="Le nombre de places doit être supérieur à 0." ;
     return;
     }
 
+
+    
+    
     // Sinon insertion
     Trajet::create($_POST, 1);
+    
+    $_SESSION['success'] = "Trajet créé avec succès !";
 
+    
     $this->redirect('/touche-pas-au-klaxon/public/');
     }

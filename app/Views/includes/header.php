@@ -10,3 +10,10 @@
     <h1>Touche pas au klaxon</h1>
 </header>
 <main class="container mt-4">
+
+<?php if (!empty($_SESSION['success'])): ?>
+    <div class="alert alert-success">
+        <?= htmlspecialchars($_SESSION['success']) ?>
+    </div>
+    <?php unset($_SESSION['success']); ?>
+<?php endif; ?>
