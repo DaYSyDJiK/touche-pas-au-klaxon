@@ -18,7 +18,10 @@
                 <span class="mx-2">Bonjour <?= htmlspecialchars($_SESSION['user']['prenom']) ?></span>
                 <a href="http://localhost/touche-pas-au-klaxon/public/index.php/trajets/create" class="btn btn-outline-light">Créer un trajet</a>
                 <a href="http://localhost/touche-pas-au-klaxon/public/index.php/auth/logout" class="btn btn-outline-light">Déconnexion</a>
-            
+            <?php endif; ?>
+
+            <?php if (!empty($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                <a href="http://localhost/touche-pas-au-klaxon/public/index.php/admin/dashboard" class="btn btn-outline-light">Admin</a>
             <?php endif; ?>
 
             <?php if (empty($_SESSION['user'])): ?>

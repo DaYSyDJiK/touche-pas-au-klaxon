@@ -19,6 +19,26 @@ abstract class BaseController
         require '../app/Views/includes/footer.php';
     }
 
+
+    protected function requireLogin(): void{
+        if (empty($_SESSION['user'])) {
+            $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
+        }
+    }
+
+    protected function requireAdmin(): void
+    {
+        if (empty($_SESSION['user'])) {
+            $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
+        }
+        if ($_SESSION['user']['role'] !== 'admin') {
+            $_SESSION['error'] = 'Accès refusé : vous devez être administrateur pour accéder à cette page.';
+            $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
+        }
+    }
+
+
+
     /**
      * Redirection HTTP
      */

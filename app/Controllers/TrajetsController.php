@@ -14,19 +14,20 @@ class TrajetsController extends BaseController
     }
 
     public function create(): void
-{
-    $agences = Agence::getAll();
+    {
+        $this->requireLogin();
+        $agences = Agence::getAll();
 
-    $this->render('trajets/create', [
-        'agences' => $agences
-    ]);
-}
+        $this->render('trajets/create', [
+            'agences' => $agences
+        ]);
+    }
 
-public function store(): void
-{
-    Trajet::create($_POST, 1);
+    public function store(): void
+    {
+        $this->requireLogin();
+        Trajet::create($_POST, 1);
 
-    $this->redirect('/touche-pas-au-klaxon/public/');
-}
-
+        $this->redirect('/touche-pas-au-klaxon/public/');
+    }
 }
