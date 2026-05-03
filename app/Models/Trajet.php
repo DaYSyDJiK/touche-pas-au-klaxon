@@ -146,5 +146,28 @@ class Trajet extends BaseModel
         ]);
     }
 
+    public static function getByUser(int $idutilisateur): array{
+
+    $pdo = self::getPDO();
+
+        $sql = "SELECT t.id_utilisateur,
+        a1.ville AS agence_depart,
+        a2.ville AS agence_arrivee,
+        t.date_heure_depart,
+        t.date_heure_arrivee,
+        t.nombre_places_total,
+        t.nombre_places_disponibles 
+        FROM trajet t
+        JOIN agence a1 ON t.id_agence_depart = a1.id_agence
+        JOIN agence a2 ON t.id_agence_arrivee = a2.id_agence
+        WHERE t.id_utilisateur = :id_utilisateur
+        ORDER BY t.date_heure_depart DESC";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id_utilisateur' => $idutilisateur]);
+
+        return $stmt->fetchAll();
+    }
+
     
 }
