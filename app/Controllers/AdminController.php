@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Agence;
+use App\Models\User;
 
 class AdminController extends BaseController
 {
@@ -88,5 +89,11 @@ class AdminController extends BaseController
         $_SESSION['success'] = "Agence supprimée avec succès !";
         $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
 
+    }
+
+    public function users(): void{
+        $this->requireAdmin();
+        $users = User::getAll();
+        $this->render('admin/users', ['users' => $users]);
     }
 }

@@ -31,6 +31,15 @@ class User extends BaseModel
         ]);
 
     }
+
+    public static function getAll(): array{
+        $pdo = self::getPDO();
+
+        $sql = "SELECT id_utilisateur, prenom, nom, email, telephone, role FROM utilisateur ORDER BY nom ASC";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
 
 
