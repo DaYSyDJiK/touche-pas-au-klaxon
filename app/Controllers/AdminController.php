@@ -77,4 +77,16 @@ class AdminController extends BaseController
 
         $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
     }
+
+    public function deleteAgence(int $id): void{
+        $this->requireAdmin();
+        if (!Agence::findById($id)) {
+            $_SESSION['error'] = "Agence non trouvée.";
+            $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
+        }
+        Agence::delete($id);
+        $_SESSION['success'] = "Agence supprimée avec succès !";
+        $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
+
+    }
 }

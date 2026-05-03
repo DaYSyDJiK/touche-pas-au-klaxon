@@ -6,15 +6,15 @@
     <div class="d-flex mb-5 align-items-center justify-content-center text-center">
         <div class="mx-3">
             <h2>Gérer les trajets</h2>
-            <a href="/touche-pas-au-klaxon/public/index.php/trajets" class="btn btn-primary">Voir les trajets</a>
+            <a href="/touche-pas-au-klaxon/public/index.php/admin/trajets" class="btn btn-primary">Voir les trajets</a>
         </div>
         <div class="mx-3">
             <h2>Gérer les agences</h2>
-            <a href="/touche-pas-au-klaxon/public/index.php/agences" class="btn btn-primary">Voir les agences</a>
+            <a href="/touche-pas-au-klaxon/public/index.php/admin/agences" class="btn btn-primary">Voir les agences</a>
         </div>
         <div class="mx-3">
             <h2>Gérer les utilisateurs</h2>
-            <a href="/touche-pas-au-klaxon/public/index.php/users" class="btn btn-primary">Voir les utilisateurs</a>
+            <a href="/touche-pas-au-klaxon/public/index.php/admin/users" class="btn btn-primary">Voir les utilisateurs</a>
         </div>
     </div>
 </div>
