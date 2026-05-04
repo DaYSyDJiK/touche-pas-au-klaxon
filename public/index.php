@@ -16,7 +16,7 @@ if ($segments[0] === 'index.php') {
     array_shift($segments);
 }
 
-// ✅ Contrôleur et action par défaut
+// Contrôleur et action par défaut
 $controllerName = !empty($segments[0]) ? $segments[0] : 'trajets';
 $action = $segments[1] ?? 'index';
 

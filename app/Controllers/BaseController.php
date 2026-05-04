@@ -14,15 +14,16 @@ abstract class BaseController
     {
         extract($data);
 
-        require '../app/Views/includes/header.php';
-        require "../app/Views/{$view}.php";
-        require '../app/Views/includes/footer.php';
+        require __DIR__ . '/../Views/includes/header.php';
+        require __DIR__ . "/../Views/{$view}.php";
+        require __DIR__ . '/../Views/includes/footer.php';
     }
 
     /**
      * Vérifie que l'utilisateur est connecté, sinon redirige vers la page de connexion
      */
-    protected function requireLogin(): void{
+    protected function requireLogin(): void
+    {
         if (empty($_SESSION['user'])) {
             $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
         }
@@ -41,7 +42,6 @@ abstract class BaseController
             $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
         }
     }
-
 
 
     /**

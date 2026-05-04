@@ -19,6 +19,6 @@
         "twbs/bootstrap": "^5.3"
     },
     "require-dev": {
-        "phpstan/phpstan": "*"
+        "phpstan/phpstan": "^2.1"
     }
 }
