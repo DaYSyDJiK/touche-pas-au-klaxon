@@ -11,28 +11,36 @@ class Trajet extends BaseModel
      * Retourne les trajets à venir avec des places disponibles
      */
     public static function getTrajetsDisponibles(): array
-    {
-        $pdo = self::getPDO();
+{
+    $pdo = self::getPDO();
 
-        $sql = "
-    SELECT 
-        t.id_trajet,
-        a1.ville AS agence_depart,
-        a2.ville AS agence_arrivee,
-        t.date_heure_depart,
-        t.date_heure_arrivee,
-        t.nombre_places_disponibles
-    FROM trajet t
-    JOIN agence a1 ON t.id_agence_depart = a1.id_agence
-    JOIN agence a2 ON t.id_agence_arrivee = a2.id_agence
-    WHERE t.nombre_places_disponibles > 0
-      AND t.date_heure_depart > NOW()
-    ORDER BY t.date_heure_depart ASC
-";
+    $sql = "
+        SELECT 
+            t.id_trajet,
+            a1.ville AS agence_depart,
+            a2.ville AS agence_arrivee,
+            t.date_heure_depart,
+            t.date_heure_arrivee,
+            t.nombre_places_total,
+            t.nombre_places_disponibles,
+            u.prenom AS auteur_prenom,
+            u.nom AS auteur_nom,
+            u.email AS auteur_email,
+            u.telephone AS auteur_telephone,
+            u.id_utilisateur AS auteur_id
+        FROM trajet t
+        JOIN agence a1 ON t.id_agence_depart = a1.id_agence
+        JOIN agence a2 ON t.id_agence_arrivee = a2.id_agence
+        JOIN utilisateur u ON t.id_utilisateur = u.id_utilisateur
+        WHERE t.nombre_places_disponibles > 0
+          AND t.date_heure_depart > NOW()
+        ORDER BY t.date_heure_depart ASC
+    ";
 
-        $stmt = $pdo->query($sql);
-        return $stmt->fetchAll();
-    }
+    $stmt = $pdo->query($sql);
+
+    return $stmt->fetchAll();
+}
 
     public static function create(array $data, int $idUtilisateur): void
     {
