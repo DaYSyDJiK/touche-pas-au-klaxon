@@ -19,4 +19,27 @@ class TrajetTest extends TestCase
 
         $this->assertTrue(true);
     }
+
+    public function testUpdateTrajet()
+{
+    $data = [
+        'id_agence_depart' => 1,
+        'id_agence_arrivee' => 2,
+        'date_heure_depart' => '2026-01-01 10:00:00',
+        'date_heure_arrivee' => '2026-01-01 12:00:00',
+        'nombre_places_total' => 5,
+        'nombre_places_disponibles' => 5
+    ];
+
+    Trajet::update(1, $data);
+
+    $this->assertTrue(true);
+}
+
+public function testDeleteTrajet()
+{
+    Trajet::delete(1);
+
+    $this->assertTrue(true);
+}
 }
