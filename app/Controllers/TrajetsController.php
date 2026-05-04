@@ -5,15 +5,24 @@ namespace App\Controllers;
 use App\Models\Trajet;
 use App\Models\Agence;
 
-
+/*
+ * Contrôleur pour les actions liées aux trajets
+ */
 class TrajetsController extends BaseController
-{
+{   
+
+    /**
+     * Affiche la liste des trajets disponibles
+     */
     public function index(): void
     {
         $trajets = Trajet::getTrajetsDisponibles();
         $this->render('trajets/index', ['trajets' => $trajets]);
     }
 
+    /**
+     * Affiche le formulaire de création d'un trajet
+     */
     public function create(): void
     {
         $this->requireLogin();
@@ -24,6 +33,9 @@ class TrajetsController extends BaseController
         ]);
     }
 
+    /**
+     * Traite la création d'un trajet
+     */
     public function store(): void
     {
         $this->requireLogin();
@@ -67,6 +79,9 @@ class TrajetsController extends BaseController
         $this->redirect('/touche-pas-au-klaxon/public/index.php/trajets/mesTrajets');
     }
 
+    /**
+     * Affiche les trajets de l'utilisateur connecté
+     */
     public function mesTrajets(): void
     {
         $this->requireLogin();
@@ -75,6 +90,9 @@ class TrajetsController extends BaseController
         $this->render('trajets/mes_trajets', ['trajets' => $trajets]);
     }
 
+    /**
+     * Affiche le formulaire d'édition d'un trajet
+     */
     public function edit(int $id): void
     {
         $this->requireLogin();
@@ -97,6 +115,9 @@ class TrajetsController extends BaseController
         return;
     }
 
+    /**
+     * Traite la mise à jour d'un trajet
+     */
     public function update(int $id): void
     {
         $this->requireLogin();
@@ -150,6 +171,10 @@ class TrajetsController extends BaseController
         return;
     }
 
+
+    /**
+     * Traite la suppression d'un trajet
+     */
     public function delete(int $id): void
     {
         $this->requireLogin();

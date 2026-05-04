@@ -19,13 +19,18 @@ abstract class BaseController
         require '../app/Views/includes/footer.php';
     }
 
-
+    /**
+     * Vérifie que l'utilisateur est connecté, sinon redirige vers la page de connexion
+     */
     protected function requireLogin(): void{
         if (empty($_SESSION['user'])) {
             $this->redirect('/touche-pas-au-klaxon/public/index.php/auth/login');
         }
     }
 
+    /**
+     * Vérifie que l'utilisateur est admin, sinon redirige vers la page de connexion
+     */
     protected function requireAdmin(): void
     {
         if (empty($_SESSION['user'])) {

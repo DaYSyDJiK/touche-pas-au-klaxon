@@ -17,5 +17,8 @@
     "minimum-stability": "stable",
     "require": {
         "twbs/bootstrap": "^5.3"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "*"
     }
 }

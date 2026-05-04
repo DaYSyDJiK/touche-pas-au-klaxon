@@ -42,6 +42,9 @@ class Trajet extends BaseModel
     return $stmt->fetchAll();
 }
 
+    /**
+     * Crée un nouveau trajet
+     */
     public static function create(array $data, int $idUtilisateur): void
     {
         $pdo = self::getPDO();
@@ -79,6 +82,9 @@ class Trajet extends BaseModel
         ]);
     }
 
+    /**
+     * Supprime un trajet
+     */
     public static function getAll(): array
     {
         $pdo = self::getPDO();
@@ -100,7 +106,9 @@ class Trajet extends BaseModel
         return $stmt->fetchAll();
     }
 
-
+    /**
+     * Retourne un trajet par son ID
+     */
     public static function findById(int $id): ?array
     {
         $pdo = self::getPDO();
@@ -115,7 +123,9 @@ class Trajet extends BaseModel
         return $trajet ?: null;
     }
 
-
+    /**
+     * Supprime un trajet
+     */
     public static function delete(int $id): void
     {
         $pdo = self::getPDO();
@@ -126,7 +136,9 @@ class Trajet extends BaseModel
         $stmt->execute([':id' => $id]);
     }
 
-
+    /**
+     * Met à jour un trajet
+     */
     public static function update(int $id, array $data): void
     {
         $pdo = self::getPDO();
@@ -154,6 +166,9 @@ class Trajet extends BaseModel
         ]);
     }
 
+    /**
+     * Retourne les trajets d'un utilisateur
+     */
     public static function getByUser(int $idutilisateur): array{
 
     $pdo = self::getPDO();

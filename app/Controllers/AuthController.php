@@ -2,13 +2,24 @@
 
 namespace App\Controllers;
 
+
+/**
+ * Contrôleur pour les actions d'authentification
+ */
 class AuthController extends BaseController
-{
+{   
+
+    /**
+     * Affiche le formulaire de connexion
+     */
     public function login(): void
     {
         $this->render('auth/login');
     }
 
+    /**
+     * Traite la connexion de l'utilisateur
+     */
     public function authenticate(): void
     {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -38,6 +49,9 @@ class AuthController extends BaseController
         ]);
     }
 
+    /**
+     * Permet la déconnexion de l'utilisateur
+     */
     public function logout(): void
     {
         session_destroy();

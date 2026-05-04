@@ -6,10 +6,17 @@ use App\Models\Agence;
 use App\Models\User;
 use App\Models\Trajet;
 
+
+/**
+ * Contrôleur pour les actions d'administration
+ */
+
 class AdminController extends BaseController
 {
 
-
+    /**
+     * Affiche le tableau de bord admin
+     */
     public function dashboard(): void
     {
         $this->requireAdmin();
@@ -17,7 +24,9 @@ class AdminController extends BaseController
         $this->render('admin/dashboard');
     }
 
-
+    /**
+     * Affiche la liste des agences
+     */
     public function agences(): void
     {
         $this->requireAdmin();
@@ -25,12 +34,19 @@ class AdminController extends BaseController
         $this->render('admin/agences', ['agences' => $agences]);
     }
 
+    /**
+     * Affiche le formulaire de création d'une agence
+     */
     public function createAgence(): void
     {
         $this->requireAdmin();
         $this->render('admin/create_agence');
     }
 
+
+    /**
+     * Traite la création d'une agence
+     */
     public function storeAgence(): void
     {
         $this->requireAdmin();
@@ -49,7 +65,9 @@ class AdminController extends BaseController
     }
 
 
-
+    /**
+     * Affiche le formulaire d'édition d'une agence
+     */
     public function editAgence(int $id): void
     {
 
@@ -63,6 +81,10 @@ class AdminController extends BaseController
         $this->render('admin/edit_agence', ['agence' => $agence]);
     }
 
+
+    /**
+     * Traite la mise à jour d'une agence
+     */
     public function updateAgence(int $id): void
     {
         $this->requireAdmin();
@@ -80,6 +102,9 @@ class AdminController extends BaseController
         $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
     }
 
+    /**
+     * Traite la suppression d'une agence
+     */
     public function deleteAgence(int $id): void
     {
         $this->requireAdmin();
@@ -93,12 +118,19 @@ class AdminController extends BaseController
         $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/agences');
     }
 
+    /**
+     * Affiche la liste des utilisateurs
+     */
     public function users(): void
     {
         $this->requireAdmin();
         $users = User::getAll();
         $this->render('admin/users', ['users' => $users]);
     }
+
+    /**
+     * Affiche la liste des trajets
+     */
 
     public function trajets(): void
     {
@@ -107,6 +139,9 @@ class AdminController extends BaseController
         $this->render('admin/trajets', ['trajets' => $trajets]);
     }
 
+    /**
+     * Traite la suppression d'un trajet
+     */
     public function deleteTrajet(int $id): void
     {
         $this->requireAdmin();
@@ -120,6 +155,9 @@ class AdminController extends BaseController
         $this->redirect('/touche-pas-au-klaxon/public/index.php/admin/trajets');
     }
 
+    /**
+     * Affiche le formulaire d'édition d'un trajet
+     */
     public function editTrajet(int $id): void
     {
         $this->requireAdmin();
@@ -140,6 +178,9 @@ class AdminController extends BaseController
         ]);
     }
 
+    /**
+     * Traite la mise à jour d'un trajet
+     */
     public function updateTrajet(int $id): void
     {
         $this->requireAdmin();

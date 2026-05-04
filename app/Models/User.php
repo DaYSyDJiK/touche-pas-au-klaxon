@@ -2,8 +2,16 @@
     
 namespace App\Models;
 
+
+/**
+ * Modèle User
+ */
 class User extends BaseModel
 {
+
+    /**
+     * Trouve un utilisateur par son email
+     */
     public static function findByEmail(string $email): ?array
     {
         $pdo = self::getPDO();
@@ -15,6 +23,9 @@ class User extends BaseModel
         return $user ?: null;
     }
 
+    /**
+    * Crée un nouvel utilisateur
+    */
     public static function create(array $data): void{
         $pdo = self::getPDO();
 
@@ -32,6 +43,9 @@ class User extends BaseModel
 
     }
 
+    /**
+     * Retourne tous les utilisateurs
+     */
     public static function getAll(): array{
         $pdo = self::getPDO();
 
