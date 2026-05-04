@@ -6,7 +6,8 @@ INSERT INTO agence (ville) VALUES
 
 -- Utilisateur
 INSERT INTO utilisateur (prenom, nom, email, mot_de_passe, telephone, role) VALUES
-('Maxime', 'Test', 'maxime@test.com', '1234', '0600000000', 'admin');
+('Maxime', 'Test', 'maxime@test.com', '1234', '0600000000', 'admin'),
+('Jean', 'Utilisateur', 'user@test.com', '1234', '0611111111', 'user');
 
 -- Trajets (attention aux dates futures)
 INSERT INTO trajet (
